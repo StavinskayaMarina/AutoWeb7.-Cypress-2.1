@@ -6,5 +6,6 @@
   "openTicketSalesButton": "#start-sales > .text-center > .conf-step__button",
   "seatsInHall": "body > main > section > div.buying-scheme > div.buying-scheme__wrapper > div:nth-child(4) > span:nth-child(8)",
   "bookButton": ".acceptin-button",
-  "movies": "body > main > section:nth-child(2) > div.movie-seances__hall > ul > li > a"
+  "movies": "body > main > section:nth-child(2) > div.movie-seances__hall > ul > li > a",
+  "movieAdmin": "[data-seance-id='189']"
 }

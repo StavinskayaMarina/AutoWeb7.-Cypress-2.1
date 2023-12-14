@@ -5,17 +5,20 @@ describe("testing booking a movie in an accessible theater ", () => {
   beforeEach(() => {
     cy.visit("/admin/");
   });
-
   it("booking a movie ticket", () => {
     cy.login(login.validEmail, login.validPassword);
     cy.contains("Управление залами").should("be.visible");
-    cy.get(selector.availableSessions).eq(2);
-    cy.get(selector.hallName).click();
-    cy.get(selector.openTicketSalesButton).click();
-
-    cy.visit("/client");
+    cy.get(selector.movieAdmin).then(($el) => $el.textContent);
+    cy.contains("Унесенные ветром.").should("be.visible");
+    cy.get(selector.movieAdmin)
+      .invoke("text")
+      .then((text) => {
+        cy.visit("/client");
+        cy.get(selector.movieAdmin);
+        cy.contains("14:00").should("be.visible");
+      });
     cy.get(selector.nextDay).click();
-    cy.get(selector.movies).click();
+    cy.get(selector.movieAdmin).click();
     cy.contains("Начало сеанса").should("be.visible");
     cy.waitSeats();
     cy.get(selector.bookButton).click();
